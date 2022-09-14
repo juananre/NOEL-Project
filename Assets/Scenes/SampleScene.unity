@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5955,7 +5955,7 @@ MonoBehaviour:
   _contactForceMode: 0
   _allowMultiGrasp: 1
   _moveObjectWhenGrasped: 1
-  graspedMovementType: 1
+  graspedMovementType: 0
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 0
@@ -6334,6 +6334,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: interacion m.4
       objectReference: {fileID: 0}
+    - target: {fileID: 3066859405484064380, guid: 4109fa60f730bad49ae29539a7e4589a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229025804569072099, guid: 4109fa60f730bad49ae29539a7e4589a, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4109fa60f730bad49ae29539a7e4589a, type: 3}
 --- !u!1001 &4523531220820491985
@@ -6367,6 +6375,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 3458671198101290715, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6377,7 +6389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12699929
+      value: -0.12699926
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6389,15 +6401,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209566, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6417,7 +6429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523531221531209567, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ffb91a6fa3af14f99bcbc1173a8482, type: 3}
@@ -6476,9 +6488,17 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 682286939}
+    - target: {fileID: 6112283655655606613, guid: 909140e556967544d9f43ecc7f9acbe2, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8890535905469790146, guid: 909140e556967544d9f43ecc7f9acbe2, type: 3}
       propertyPath: m_Name
       value: interacion m.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890535905469790146, guid: 909140e556967544d9f43ecc7f9acbe2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909140e556967544d9f43ecc7f9acbe2, type: 3}
