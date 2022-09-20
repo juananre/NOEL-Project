@@ -7,6 +7,11 @@ TagManager:
   - rodillo
   - batidora
   - ingredientes
+  - glasear
+  - toque
+  - festival
+  - sultana
+  - duacales
   layers:
   - Default
   - TransparentFX
