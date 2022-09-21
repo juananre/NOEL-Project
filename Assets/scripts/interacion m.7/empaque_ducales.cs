@@ -24,7 +24,7 @@ public class empaque_ducales : MonoBehaviour
     {
         if (collision.gameObject.tag == "duacales")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
             recolectado++;
             if (recolectado == necesario)
             {

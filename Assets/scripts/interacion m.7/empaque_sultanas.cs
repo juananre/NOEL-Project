@@ -24,7 +24,7 @@ public class empaque_sultanas : MonoBehaviour
     {
         if (collision.gameObject.tag == "sultana")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
             recolectado++;
             if (recolectado == necesario)
             {

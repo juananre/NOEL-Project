@@ -24,7 +24,7 @@ public class empaque_festival : MonoBehaviour
     {
         if (collision.gameObject.tag == "festival")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
             recolectado++;
             if (recolectado == necesario)
             {
