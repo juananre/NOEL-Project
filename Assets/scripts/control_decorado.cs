@@ -6,7 +6,7 @@ namespace Leap.Unity.Interaction {
     public class control_decorado : MonoBehaviour
     {
         [SerializeField] float energia_decorado;
-        [SerializeField]int toque_puesto = 0;
+        [SerializeField] int toque_puesto = 0;
         [SerializeField] float requerido = 5;
         [SerializeField] float requerido_2 = 2;
         [SerializeField] InteractionBehaviour script;
@@ -71,6 +71,7 @@ namespace Leap.Unity.Interaction {
             {
                 
                 toque_puesto++;
+
                 transform.position = reinicio_2.position;
                 transform.rotation = reinicio_2.rotation;
 
