@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class empaque_festival : MonoBehaviour
 {
-    [SerializeField] int necesario;
-    [SerializeField] int recolectado;
+    [SerializeField] int necesario_festival;
+    [SerializeField] int recolectado_festival;
 
     [SerializeField] Transform ubicacion_sultana;
     [SerializeField] Transform ubicacion_ducales;
@@ -25,8 +25,8 @@ public class empaque_festival : MonoBehaviour
         if (collision.gameObject.tag == "festival")
         {
             Destroy(collision.gameObject);
-            recolectado++;
-            if (recolectado == necesario)
+            recolectado_festival++;
+            if (recolectado_festival == necesario_festival)
             {
                 print("empacado festival");
             }

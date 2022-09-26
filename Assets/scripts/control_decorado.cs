@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Leap.Unity.Interaction {
     public class control_decorado : MonoBehaviour
@@ -9,6 +10,8 @@ namespace Leap.Unity.Interaction {
         [SerializeField] int toque_puesto = 0;
         [SerializeField] float requerido = 5;
         [SerializeField] float requerido_2 = 2;
+        
+        
         [SerializeField] InteractionBehaviour script;
         [SerializeField] Transform reinicio;
         [SerializeField] Transform reinicio_2;
@@ -18,11 +21,19 @@ namespace Leap.Unity.Interaction {
 
         [SerializeField] GameObject crema;
         [SerializeField] GameObject toque_sec;
+        [SerializeField] GameObject bandeja;
+
+        [SerializeField] Transform posicion;
 
         int galletas_1;
         int galletas_2;
+
         [SerializeField] int exito_1;
         [SerializeField] int exito_2 = 1;
+
+        bool verif = false;
+        bool animar = false;
+        
         
         
         // Start is called before the first frame update
@@ -35,13 +46,14 @@ namespace Leap.Unity.Interaction {
         void Update()
         {
             
-            
-         
         }
+        
         public void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("glasear"))
             {
+
+                
                 script.enabled = false;
                 energia_decorado += Time.deltaTime;
 
@@ -75,6 +87,15 @@ namespace Leap.Unity.Interaction {
                 transform.position = reinicio_2.position;
                 transform.rotation = reinicio_2.rotation;
 
+                script.enabled = false;
+                verif = true;
+
+                if (verif == true)
+                {
+                    script.enabled = true;
+                    verif = false;
+                }
+
                 if (toque_puesto >= requerido_2)
                 {
                     galletas_2++;           
@@ -82,10 +103,14 @@ namespace Leap.Unity.Interaction {
                 if (galletas_2 >= exito_2)
                 {
                     print("exito 2");
+                    animar = true;
+
                 }
             }
 
         }
+        
+       
 
 
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class horno_control : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class horno_control : MonoBehaviour
     [SerializeField] Renderer color_indicador;
     [SerializeField] Renderer color_boton_incio;
     [SerializeField] Renderer color_boton_final;
+
+    [SerializeField] GameObject bandeja;
+    [SerializeField] Transform transportar;
 
     public float tiempo_master = 0;
 
@@ -42,7 +46,7 @@ public class horno_control : MonoBehaviour
 
         if (0.001f<=tiempo_master&&tiempo_master<=5)
         {
-            color_indicador.material.color = Color.red;
+            color_indicador.material.color = Color.yellow;
             control_switch = 1;
             
         }
@@ -92,8 +96,7 @@ public class horno_control : MonoBehaviour
                     print("galletas crudas");
 
                     
-                    parar = false;
-                    tiempo_contar = false;
+                    parar = true;                  
                     tiempo_master = 0;
                     break;
             }
@@ -106,6 +109,11 @@ public class horno_control : MonoBehaviour
                     parar = false;
                     tiempo_contar = false;
                     tiempo_master = 0;
+
+                    Sequence sequence = DOTween.Sequence();
+                    sequence.Append(bandeja.transform.DOMove(transportar.position, 1f));
+                    sequence.OnComplete(() => Destroy(bandeja));
+
                     break;
             }
             switch (control_switch)
@@ -114,8 +122,7 @@ public class horno_control : MonoBehaviour
                     print("galletas quemadas");
 
                     
-                    parar = false;
-                    tiempo_contar = false;
+                    parar = true;
                     tiempo_master = 0;
                     break;
             }

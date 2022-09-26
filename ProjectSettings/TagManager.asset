@@ -12,6 +12,9 @@ TagManager:
   - festival
   - sultana
   - duacales
+  - ducales_paque
+  - festival_paquete
+  - sultana_paquete
   layers:
   - Default
   - TransparentFX
