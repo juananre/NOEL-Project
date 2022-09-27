@@ -5,17 +5,25 @@ using DG.Tweening;
 
 public class horno_control : MonoBehaviour
 {
+    [Header("--objetos")]
     [SerializeField] GameObject indicador;
     [SerializeField] GameObject boton_final;
     [SerializeField] GameObject boton_inicio;
 
+    [Header("--renders,(se auto asignan)")]
     [SerializeField] Renderer color_indicador;
     [SerializeField] Renderer color_boton_incio;
     [SerializeField] Renderer color_boton_final;
 
+    [Header("--bandeja y posiciones")]
     [SerializeField] GameObject bandeja;
     [SerializeField] Transform transportar;
+    [SerializeField] Transform momento_6;
 
+    [Header("--usuario")]
+    [SerializeField] GameObject usuario;
+
+    [Header("--tiempos")]
     public float tiempo_master = 0;
 
     bool tiempo_ini = true;
@@ -44,25 +52,25 @@ public class horno_control : MonoBehaviour
             tiempo_master += Time.deltaTime;
         }
 
-        if (0.001f<=tiempo_master&&tiempo_master<=5)
+        if (0.001f<=tiempo_master&&tiempo_master<=3)
         {
             color_indicador.material.color = Color.yellow;
             control_switch = 1;
             
         }
 
-        else if (6 <= tiempo_master && tiempo_master <= 10)
+        else if (4 <= tiempo_master && tiempo_master <= 6)
         {
             color_indicador.material.color = Color.green;
             control_switch = 2;
         }
 
-        else if (11 <= tiempo_master && tiempo_master <= 15)
+        else if (7 <= tiempo_master && tiempo_master <= 11)
         {
             color_indicador.material.color = Color.red;
             control_switch = 3;
         }
-        else if (tiempo_master > 15)
+        else if (tiempo_master > 12)
         {
             tiempo_master = 0;
             print("de nuevo");
@@ -113,6 +121,8 @@ public class horno_control : MonoBehaviour
                     Sequence sequence = DOTween.Sequence();
                     sequence.Append(bandeja.transform.DOMove(transportar.position, 1f));
                     sequence.OnComplete(() => Destroy(bandeja));
+                    sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_6.rotation, 1f));
+                    sequence.Append(usuario.transform.DOMove(momento_6.position, 1f));
 
                     break;
             }
@@ -128,5 +138,6 @@ public class horno_control : MonoBehaviour
             }
         }
     }
+  
 
 }

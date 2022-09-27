@@ -24,12 +24,15 @@ namespace Leap.Unity.Interaction {
         [SerializeField] GameObject bandeja;
 
         [SerializeField] Transform posicion;
+        [SerializeField] Transform momento_7;
 
         int galletas_1;
         int galletas_2;
 
         [SerializeField] int exito_1;
         [SerializeField] int exito_2 = 1;
+
+        [SerializeField] GameObject usuario;
 
         bool verif = false;
         bool animar = false;
@@ -102,12 +105,19 @@ namespace Leap.Unity.Interaction {
                 }
                 if (galletas_2 >= exito_2)
                 {
+                    aniam_user();
                     print("exito 2");
                     animar = true;
 
                 }
             }
 
+        }
+        void aniam_user()
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(usuario.transform.DOMove(momento_7.position, 1f));
+            sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_7.rotation, 1f));
         }
         
        
