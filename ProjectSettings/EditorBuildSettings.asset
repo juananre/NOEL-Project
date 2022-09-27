@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/InicioPapaNoel.unity
+    guid: ebb959325dca9754587c32acbeeb9bc8
+  - enabled: 1
+    path: Assets/Scenes/pirnci.unity
+    guid: 371511df17de3b24fa97e430274ce749
+  - enabled: 1
+    path: Assets/Scenes/finpapa.unity
+    guid: dc6e293e686cfc449ba8608c5efb4914
   m_configObjects: {}

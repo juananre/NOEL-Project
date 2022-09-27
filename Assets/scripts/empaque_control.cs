@@ -19,6 +19,15 @@ public class empaque_control : MonoBehaviour
     [SerializeField] Transform ubicacion_ducales;
     [SerializeField] Transform ubicacion_festival;
     [SerializeField] Transform ubicacion_sultana;
+    [SerializeField] Transform salida_ducales;
+    [SerializeField] Transform salida_festival;
+    [SerializeField] Transform salida_sultana;
+    [SerializeField] Transform llegada_paquetes;
+
+    [SerializeField] GameObject paquetes_cerrado;
+
+    int paquetes_hechos = 0;
+    int hechos = 3;
 
     void Start()
     {
@@ -29,6 +38,7 @@ public class empaque_control : MonoBehaviour
     void Update()
     {
 
+        
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -38,6 +48,9 @@ public class empaque_control : MonoBehaviour
             recolectado_sultana++;
             if (recolectado_sultana == necesario_sulana)
             {
+                Sequence sequence = DOTween.Sequence();
+                sequence.Append(transform.DOMove(salida_sultana.position, 1f));
+                sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado sultanas");
             }
         }
@@ -48,6 +61,9 @@ public class empaque_control : MonoBehaviour
             recolectado_festival++;
             if (recolectado_festival == necesario_festival)
             {
+                Sequence sequence = DOTween.Sequence();
+                sequence.Append(transform.DOMove(salida_festival.position, 1f));
+                sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado festival");
             }
         }
@@ -57,6 +73,10 @@ public class empaque_control : MonoBehaviour
             recolectado_ducales++;
             if (recolectado_ducales == necesario_ducales)
             {
+                paquetes_hechos += 1;
+                Sequence sequence = DOTween.Sequence();
+                sequence.Append(transform.DOMove(salida_ducales.position, 1f));
+                sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado ducales");
             }
         }
@@ -75,5 +95,9 @@ public class empaque_control : MonoBehaviour
         {
             collision.gameObject.transform.position = ubicacion_sultana.position;
         }
+        
+
     }
+
+  
 }
