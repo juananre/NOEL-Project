@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class AmazadoInteraccion : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class AmazadoInteraccion : MonoBehaviour
 
     [SerializeField] GameObject maza_1;
     [SerializeField] GameObject maza_2;
+    [SerializeField] Image barra;
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] RectTransform rectTransform;
 
 
     // Start is called before the first frame update
@@ -25,12 +30,21 @@ public class AmazadoInteraccion : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        energy+=Time.deltaTime;
+        BarAnimation();
+        energy +=Time.deltaTime;
         if (energy>=requerido)
         {
+            barra.fillAmount = 1;
             maza_1.SetActive(false);
-            maza_2.SetActive(true);
+            maza_2.SetActive(true);            
         }
+        
+    }
+
+    public void BarAnimation()
+    {
+        barra.fillAmount = 0;
+        barra.DOFillAmount(1, energy*8);
     }
 
 }

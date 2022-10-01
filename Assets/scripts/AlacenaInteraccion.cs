@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class AlacenaInteraccion : MonoBehaviour
 {
+    public float fadeTime = 1f;
     [Header("--aparece")]
     [SerializeField] GameObject harina;
     [SerializeField] GameObject vitaminas;
     [SerializeField] GameObject huevos;
     [SerializeField] GameObject azucar;
+    [SerializeField] Image letrero;
+    [SerializeField] Image letrero2;
+    [SerializeField] Image nota;
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] CanvasGroup canvasGroup2;
+    [SerializeField] CanvasGroup canvasGroup3;
+    [SerializeField] RectTransform rectTransform;
+    [SerializeField] RectTransform rectTransform2;
+    [SerializeField] RectTransform rectTransform3;
 
     [Header("--botones")]
     [SerializeField] GameObject bot_harina;
@@ -40,18 +51,23 @@ public class AlacenaInteraccion : MonoBehaviour
     bool ingrediente_2 = true;
     bool ingrediente_3 = true;
     bool ingrediente_4 = true;
-
+     
     void Start()
     {
-        
+        letrero.gameObject.SetActive(true);
     }
     void Update()
     {
-        if (contador_pasa == necesario)
-        {
+         if (contador_pasa == necesario)
+         {                                    
             trancicion();
-        }
+            fadeOut();            
+            fadeIn();
+            fadeInNota();
+         }       
     }
+
+
     public void Entrada_Selec_Harian()
     {
         if (ingrediente_1 == true)
@@ -137,11 +153,36 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         print("a");
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(usuario.transform.DOMove(momento_2.position, 1f));
-        sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_2.rotation, 1f));
-        contador_pasa = 0;
+        sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_2.rotation, 1.5f));
+        sequence.Append(usuario.transform.DOMove(momento_2.position, 3f));
         
+        contador_pasa = 0;        
     }
-   
+
+    public void fadeOut()
+    {
+        canvasGroup.alpha = 1f;
+        rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, 300f), fadeTime * 3, false).SetEase(Ease.InOutQuint);
+        canvasGroup.DOFade(0, fadeTime).OnComplete(() => letrero.gameObject.SetActive(false));        
+    }
+
+    public void fadeIn()
+    {
+        letrero2.gameObject.SetActive(true);
+        canvasGroup2.alpha = 0f;
+        rectTransform2.transform.localPosition = new Vector3(0f, 300f, 0f);
+        rectTransform2.DOAnchorPos(new Vector2(0f, 0f), fadeTime * 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup2.DOFade(1, fadeTime);
+    }
+
+    public void fadeInNota()
+    {
+        nota.gameObject.SetActive(true);
+        canvasGroup3.alpha = 0f;
+        rectTransform3.transform.localPosition = new Vector3(1170f, 0f, 0f);
+        rectTransform3.DOAnchorPos(new Vector2(744f, 0f), fadeTime * 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup3.DOFade(1, fadeTime);
+    }
 
 }
