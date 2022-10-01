@@ -22,6 +22,8 @@ public class tazon_control : MonoBehaviour
     [SerializeField] Image feedback2;
     [SerializeField] Image nota;
     [SerializeField] Image mezcla;
+    [SerializeField] Image letrero5;
+    [SerializeField] Image barra;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] RectTransform rectTransform;
     [SerializeField] CanvasGroup canvasGroup2;
@@ -30,6 +32,10 @@ public class tazon_control : MonoBehaviour
     [SerializeField] RectTransform rectTransform3;
     [SerializeField] CanvasGroup canvasGroup4;
     [SerializeField] RectTransform rectTransform4;
+    [SerializeField] CanvasGroup canvasGroup5;
+    [SerializeField] RectTransform rectTransform5;
+    [SerializeField] CanvasGroup canvasGroup6;
+    [SerializeField] RectTransform rectTransform6;
 
     [Header("--pocision")]
     [SerializeField] Transform p_hoya;
@@ -101,6 +107,8 @@ public class tazon_control : MonoBehaviour
 
                 print("exito");//se mueve la hoya
                 momento3.SetActive(true);
+                fadeInLetrero5();
+                fadeInBarra();
                 //delay
                 //se mueve la camara 
             }
@@ -174,12 +182,29 @@ public class tazon_control : MonoBehaviour
 
     public void fadeOutMezcla()
     {
-        canvasGroup4.alpha = 0f;
+        canvasGroup4.alpha = 1f;
         rectTransform4.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform4.DOAnchorPos(new Vector2(0f, 300f), 2 , false).SetEase(Ease.InOutQuint);
-        canvasGroup4.DOFade(1, fadeTime).OnComplete(() => mezcla.gameObject.SetActive(false));
+        canvasGroup4.DOFade(0, fadeTime).OnComplete(() => mezcla.gameObject.SetActive(false));
     }
 
+    public void fadeInLetrero5()
+    {
+        letrero5.gameObject.SetActive(true);
+        canvasGroup5.alpha = 0f;
+        rectTransform5.transform.localPosition = new Vector3(0f, 300f, 0f);
+        rectTransform5.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup5.DOFade(1, fadeTime);
+    }
+
+    public void fadeInBarra()
+    {
+        barra.gameObject.SetActive(true);
+        canvasGroup6.alpha = 0f;
+        rectTransform6.transform.localPosition = new Vector3(0f, 420f, 0f);
+        rectTransform6.DOAnchorPos(new Vector2(0f, -5f), 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup6.DOFade(1, fadeTime);
+    }
 
 
 }
