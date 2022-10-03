@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+
 namespace Leap.Unity.Interaction {
+    using UnityEngine.UI;
     public class control_decorado : MonoBehaviour
     {
         [SerializeField] float energia_decorado;
         [SerializeField] int toque_puesto = 0;
         [SerializeField] float requerido = 5;
         [SerializeField] float requerido_2 = 2;
-        
-        
+        public float fadeTime = 1f;
+
+        [Header("--Objetos")]
         [SerializeField] InteractionBehaviour script;
         [SerializeField] Transform reinicio;
         [SerializeField] Transform reinicio_2;
+
+        [Header("--UI")]
+        [SerializeField] Image letreroDecorado;
+        [SerializeField] CanvasGroup canvasGroup;
+        [SerializeField] RectTransform rectTransform;
+        [SerializeField] Image letreroDecorado2;
+        [SerializeField] CanvasGroup canvasGroup2;
+        [SerializeField] RectTransform rectTransform2;
+        [SerializeField] Image letreroEmpaque;
+        [SerializeField] CanvasGroup canvasGroup3;
+        [SerializeField] RectTransform rectTransform3;
 
         [SerializeField] GameObject zona_1;
         [SerializeField] GameObject zona_2;
@@ -42,7 +56,7 @@ namespace Leap.Unity.Interaction {
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
@@ -78,6 +92,8 @@ namespace Leap.Unity.Interaction {
 
                     crema.SetActive(false);
                     toque_sec.SetActive(true);
+                    fadeOutLetreroDecorado();
+                    fadeInLetreroDecorado2();
 
                     print("exito 1");
                 }
@@ -108,6 +124,8 @@ namespace Leap.Unity.Interaction {
                     aniam_user();
                     print("exito 2");
                     animar = true;
+                    fadeOutLetreroDecorado2();
+                    fadeInLetreroEmpaque();
 
                 }
             }
@@ -119,8 +137,43 @@ namespace Leap.Unity.Interaction {
             sequence.Append(usuario.transform.DOMove(momento_7.position, 1f));
             sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_7.rotation, 1f));
         }
-        
-       
+
+        public void fadeOutLetreroDecorado()
+        {
+            canvasGroup.alpha = 1f;
+            rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+            rectTransform.DOAnchorPos(new Vector2(0f, 300f), 2, false).SetEase(Ease.InOutQuint);
+            canvasGroup.DOFade(0, fadeTime).OnComplete(() => letreroDecorado.gameObject.SetActive(false));
+        }
+
+        public void fadeInLetreroDecorado2()
+        {
+            letreroDecorado2.gameObject.SetActive(true);
+            canvasGroup2.alpha = 0f;
+            rectTransform2.transform.localPosition = new Vector3(0f, 300f, 0f);
+            rectTransform2.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+            //rectTransform2.DOScale(transform.localScale * 1.1f, fadeTime).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            canvasGroup2.DOFade(1, fadeTime);
+        }
+
+        public void fadeOutLetreroDecorado2()
+        {
+            canvasGroup2.alpha = 1f;
+            rectTransform2.transform.localPosition = new Vector3(0f, 0f, 0f);
+            rectTransform2.DOAnchorPos(new Vector2(0f, 300f), 2, false).SetEase(Ease.InOutQuint);
+            canvasGroup2.DOFade(0, fadeTime).OnComplete(() => letreroDecorado2.gameObject.SetActive(false));
+        }
+
+        public void fadeInLetreroEmpaque()
+        {
+            letreroEmpaque.gameObject.SetActive(true);
+            canvasGroup3.alpha = 0f;
+            rectTransform3.transform.localPosition = new Vector3(0f, 300f, 0f);
+            rectTransform3.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+            //rectTransform3.DOScale(transform.localScale * 1.1f, fadeTime).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            canvasGroup3.DOFade(1, fadeTime);
+        }
+
 
 
     }

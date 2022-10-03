@@ -13,9 +13,12 @@ public class AlacenaInteraccion : MonoBehaviour
     [SerializeField] GameObject vitaminas;
     [SerializeField] GameObject huevos;
     [SerializeField] GameObject azucar;
+
+    [Header("--UI")]
     [SerializeField] Image letrero;
     [SerializeField] Image letrero2;
     [SerializeField] Image nota;
+    [SerializeField] Image logo;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] CanvasGroup canvasGroup2;
     [SerializeField] CanvasGroup canvasGroup3;
@@ -55,6 +58,7 @@ public class AlacenaInteraccion : MonoBehaviour
     void Start()
     {
         letrero.gameObject.SetActive(true);
+        logo.gameObject.SetActive(true);
     }
     void Update()
     {
@@ -173,6 +177,7 @@ public class AlacenaInteraccion : MonoBehaviour
         canvasGroup2.alpha = 0f;
         rectTransform2.transform.localPosition = new Vector3(0f, 300f, 0f);
         rectTransform2.DOAnchorPos(new Vector2(0f, 0f), fadeTime * 2, false).SetEase(Ease.InOutQuint);
+        rectTransform2.DOScale(transform.localScale * 1.1f, fadeTime).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         canvasGroup2.DOFade(1, fadeTime);
     }
 

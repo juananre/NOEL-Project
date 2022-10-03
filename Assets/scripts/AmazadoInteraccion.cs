@@ -12,15 +12,20 @@ public class AmazadoInteraccion : MonoBehaviour
 
     [SerializeField] GameObject maza_1;
     [SerializeField] GameObject maza_2;
+
+    [Header("--UI")]
     [SerializeField] Image barra;
     [SerializeField] Image letrero;
     [SerializeField] Image barraCompleta;
+    [SerializeField] Image letreroCorte;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] CanvasGroup canvasGroup2;
     [SerializeField] CanvasGroup canvasGroup3;
+    [SerializeField] CanvasGroup canvasGroup4;
     [SerializeField] RectTransform rectTransform;
     [SerializeField] RectTransform rectTransform2;
     [SerializeField] RectTransform rectTransform3;
+    [SerializeField] RectTransform rectTransform4;
 
 
 
@@ -49,6 +54,7 @@ public class AmazadoInteraccion : MonoBehaviour
                 maza_2.SetActive(true);
                 fadeOutLetrero();
                 fadeOutBarra();
+                fadeInLetreroCorte();
             }
         }              
     }
@@ -73,7 +79,13 @@ public class AmazadoInteraccion : MonoBehaviour
         rectTransform3.DOAnchorPos(new Vector2(0f, 420f), 2, false).SetEase(Ease.InOutQuint);
         canvasGroup3.DOFade(0, fadeTime).OnComplete(() => barraCompleta.gameObject.SetActive(false));
     }
-
-
-
+    public void fadeInLetreroCorte()
+    {
+        letreroCorte.gameObject.SetActive(true);
+        canvasGroup4.alpha = 0f;
+        rectTransform4.transform.localPosition = new Vector3(0f, 300f, 0f);
+        rectTransform4.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+        //rectTransform4.DOScale(transform.localScale * 1.1f, fadeTime).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        canvasGroup4.DOFade(1, fadeTime);
+    }
 }

@@ -17,6 +17,8 @@ public class tazon_control : MonoBehaviour
     [Header("--objetos")]
     [SerializeField] GameObject batidora;
     [SerializeField] GameObject momento3;
+
+    [Header("--UI")]
     [SerializeField] Image letrero2;
     [SerializeField] Image feedback1;
     [SerializeField] Image feedback2;
@@ -193,7 +195,7 @@ public class tazon_control : MonoBehaviour
         letrero5.gameObject.SetActive(true);
         canvasGroup5.alpha = 0f;
         rectTransform5.transform.localPosition = new Vector3(0f, 300f, 0f);
-        rectTransform5.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+        rectTransform5.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         canvasGroup5.DOFade(1, fadeTime);
     }
 
