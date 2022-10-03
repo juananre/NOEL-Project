@@ -50,7 +50,7 @@ public class empaque_control : MonoBehaviour
             if (recolectado_sultana == necesario_sulana)
             {
                 Sequence sequence = DOTween.Sequence();
-                sequence.Append(transform.DOMove(salida_sultana.position, 1f));
+                sequence.Append(transform.DOMove(salida_sultana.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado sultanas");
             }
@@ -63,7 +63,7 @@ public class empaque_control : MonoBehaviour
             if (recolectado_festival == necesario_festival)
             {
                 Sequence sequence = DOTween.Sequence();
-                sequence.Append(transform.DOMove(salida_festival.position, 1f));
+                sequence.Append(transform.DOMove(salida_festival.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado festival");
             }
@@ -76,7 +76,7 @@ public class empaque_control : MonoBehaviour
             {
                 paquetes_hechos += 1;
                 Sequence sequence = DOTween.Sequence();
-                sequence.Append(transform.DOMove(salida_ducales.position, 1f));
+                sequence.Append(transform.DOMove(salida_ducales.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado ducales");
             }

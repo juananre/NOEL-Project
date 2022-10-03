@@ -122,10 +122,10 @@ namespace Leap.Unity.Interaction {
                 if (galletas_2 >= exito_2)
                 {
                     aniam_user();
-                    print("exito 2");
-                    animar = true;
+                    print("exito 2");                   
                     fadeOutLetreroDecorado2();
                     fadeInLetreroEmpaque();
+                    animar = true;
 
                 }
             }
@@ -134,8 +134,8 @@ namespace Leap.Unity.Interaction {
         void aniam_user()
         {
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(usuario.transform.DOMove(momento_7.position, 1f));
-            sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_7.rotation, 1f));
+            sequence.Append(usuario.transform.DOMove(momento_7.position, 3f));
+            sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_7.rotation, 2f));
         }
 
         public void fadeOutLetreroDecorado()
