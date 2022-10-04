@@ -12,11 +12,14 @@ public class tazon_control : MonoBehaviour
     public float energy_tazon;
     public int requerido = 10;
     public float fadeTime = 1f;
+    public float tiempo_aparicion_maza = 0f;
+    public float timpo_maza_necesario = 6f;
 
     
     [Header("--objetos")]
     [SerializeField] GameObject batidora;
     [SerializeField] GameObject momento3;
+    [SerializeField] GameObject maza_momento3;
 
     [Header("--UI")]
     [SerializeField] Image letrero2;
@@ -59,7 +62,14 @@ public class tazon_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animacion_tazon();
+        }
+        if (gameObject == p_hoya_2.transform)
+        {
+            maza_momento3.SetActive(true);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -120,17 +130,23 @@ public class tazon_control : MonoBehaviour
     void animacion_tazon()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(p_hoya.position, 1f));
-        sequence.Append(transform.DOMove(p_hoya_2.position, 1f));
+        sequence.Append(transform.DOMove(p_hoya.position, 2f));
+        sequence.Append(transform.DOMove(p_hoya_2.position, 2f));
         sequence.Append(transform.DORotateQuaternion(p_hoya.rotation, 2f));
-        sequence.Append(transform.DORotateQuaternion(p_hoya_resta.rotation, 1f));
-        sequence.Append(transform.DOMove(p_hoya.position, 1f));
+        sequence.Append(transform.DORotateQuaternion(p_hoya_resta.rotation, 2f));
+        sequence.Append(transform.DOMove(p_hoya.position, 2f));
         sequence.OnComplete(() => gameObject.SetActive(false));
+        tiempo_aparicion_maza += Time.deltaTime;
+
+        if (tiempo_aparicion_maza == timpo_maza_necesario)
+        {
+           
+        }
+
     }
     void animacion_usuario()
     {
-        print($"pos jugador: {usuario.transform.position}");
-        print($"pos destino: {momento_2_3.position}");
+        
         Sequence sequence2 = DOTween.Sequence();
         sequence2.Append(usuario.transform.DOMove(momento_2_3.position, 1f));
     }    

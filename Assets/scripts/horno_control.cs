@@ -38,7 +38,8 @@ public class horno_control : MonoBehaviour
 
     [Header("--bandeja y posiciones")]
     [SerializeField] GameObject bandeja;
-    [SerializeField] Transform transportar;
+    [SerializeField] Transform pocision1;
+    [SerializeField] Transform pocision2;
     [SerializeField] Transform momento_6;
 
     [Header("--usuario")]
@@ -148,7 +149,8 @@ public class horno_control : MonoBehaviour
                     tiempo_master = 0;
 
                     Sequence sequence = DOTween.Sequence();
-                    sequence.Append(bandeja.transform.DOMove(transportar.position, 1f));
+                    sequence.Append(bandeja.transform.DOMove(pocision1.position, 1f));
+                    sequence.Append(bandeja.transform.DOMove(pocision2.position, 1f));
                     sequence.OnComplete(() => Destroy(bandeja));
                     sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_6.rotation, 1f));
                     sequence.Append(usuario.transform.DOMove(momento_6.position, 1f));

@@ -6,12 +6,18 @@ using UnityEngine.UI;
 
 public class AmazadoInteraccion : MonoBehaviour
 {
+    [Header("--energia")]
+
     public float energy;
     public int requerido =10;
     public float fadeTime = 1f;
 
+    [Header("--objetos")]
+
     [SerializeField] GameObject maza_1;
     [SerializeField] GameObject maza_2;
+    [SerializeField] GameObject rodillo_normal;
+    [SerializeField] GameObject rodillo_corte;
 
     [Header("--UI")]
     [SerializeField] Image barra;
@@ -52,6 +58,8 @@ public class AmazadoInteraccion : MonoBehaviour
                 barra.DOFillAmount(1, 1);
                 maza_1.SetActive(false);
                 maza_2.SetActive(true);
+                rodillo_normal.SetActive(false);
+                rodillo_corte.SetActive(true);
                 fadeOutLetrero();
                 fadeOutBarra();
                 fadeInLetreroCorte();

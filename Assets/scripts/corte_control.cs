@@ -88,8 +88,8 @@ public class corte_control : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         sequence.Append(maza_cortada.transform.DOMove(pocision_1.position, 0.5f));
         sequence.Append(maza_cortada.transform.DOMove(pocision_2.position, 0.5f));
-        sequence.Append(maza_cortada.transform.DOMove(pocision_3.position, 0.5f));
-        sequence.OnComplete(() => Destroy(maza_cortada));
+        sequence.Append(maza_cortada.transform.DOMove(pocision_3.position, 2f));
+        //sequence.OnComplete(() => Destroy(maza_cortada));
     }
     void animacion_usuario()
     {

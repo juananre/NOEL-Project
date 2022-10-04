@@ -15,7 +15,7 @@ public class papanoel_adios : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(indice);
         }
