@@ -15,11 +15,17 @@ public class tazon_control : MonoBehaviour
     public float tiempo_aparicion_maza = 0f;
     public float timpo_maza_necesario = 6f;
 
+    public int conter_masa=0;
+
     
     [Header("--objetos")]
     [SerializeField] GameObject batidora;
     [SerializeField] GameObject momento3;
     [SerializeField] GameObject maza_momento3;
+    [SerializeField] GameObject maza_1;
+    [SerializeField] GameObject maza_2;
+    [SerializeField] GameObject maza_3;
+    [SerializeField] GameObject maza_4;
 
     [Header("--UI")]
     [SerializeField] Image letrero2;
@@ -66,10 +72,7 @@ public class tazon_control : MonoBehaviour
         {
             animacion_tazon();
         }
-        if (gameObject == p_hoya_2.transform)
-        {
-            maza_momento3.SetActive(true);
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -78,6 +81,7 @@ public class tazon_control : MonoBehaviour
         if (other.CompareTag("ingredientes"))
         {
             conter++;
+            conter_masa += 1;
             Destroy(other.gameObject);
 
             if(conter == 1)
@@ -95,6 +99,22 @@ public class tazon_control : MonoBehaviour
                 letrero2.gameObject.SetActive(false);
                 fadeOutNota();
                 fadeInMezcla();
+            }
+            switch (conter_masa)
+            {
+                case 1:
+                    maza_1.SetActive(true);
+                    break;
+                case 2:
+                    maza_2.SetActive(true);
+                    break;
+                case 3:
+                    maza_3.SetActive(true);
+                    break;
+                case 4:
+                    maza_4.SetActive(true);
+                    break;
+
             }
 
         }
@@ -136,12 +156,6 @@ public class tazon_control : MonoBehaviour
         sequence.Append(transform.DORotateQuaternion(p_hoya_resta.rotation, 2f));
         sequence.Append(transform.DOMove(p_hoya.position, 2f));
         sequence.OnComplete(() => gameObject.SetActive(false));
-        tiempo_aparicion_maza += Time.deltaTime;
-
-        if (tiempo_aparicion_maza == timpo_maza_necesario)
-        {
-           
-        }
 
     }
     void animacion_usuario()
