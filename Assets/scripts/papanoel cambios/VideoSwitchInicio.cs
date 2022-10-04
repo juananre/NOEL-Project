@@ -18,6 +18,6 @@ public class VideoSwitchInicio : MonoBehaviour
 
     void CheckOver(UnityEngine.Video.VideoPlayer vp)
     {
-        SceneManager.LoadScene(1);//the scene that you want to load after the video has ended.
+        SceneManager.LoadScene(2);//the scene that you want to load after the video has ended.
     }
 }

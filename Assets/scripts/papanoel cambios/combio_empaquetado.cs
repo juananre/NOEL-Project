@@ -9,7 +9,7 @@ public class combio_empaquetado : MonoBehaviour
     [SerializeField] GameObject empaque_1;
     [SerializeField] GameObject empaque_2;
     [SerializeField] GameObject empaque_3;
-    int cambio = 2;
+    int cambio = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class combio_empaquetado : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }

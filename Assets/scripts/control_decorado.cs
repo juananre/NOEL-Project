@@ -18,6 +18,7 @@ namespace Leap.Unity.Interaction {
         [SerializeField] InteractionBehaviour script;
         [SerializeField] Transform reinicio;
         [SerializeField] Transform reinicio_2;
+        [SerializeField] GameObject crema_particulas;
 
         [Header("--UI")]
         [SerializeField] Image letreroDecorado;
@@ -70,7 +71,7 @@ namespace Leap.Unity.Interaction {
             if (other.CompareTag("glasear"))
             {
 
-                
+                crema_particulas.SetActive(true);
                 script.enabled = false;
                 energia_decorado += Time.deltaTime;
 
@@ -84,6 +85,7 @@ namespace Leap.Unity.Interaction {
                     energia_decorado = 0;
 
                     script.enabled = true;
+                    crema_particulas.SetActive(false);
                 }
                 if (galletas_1 >= exito_1)
                 {
