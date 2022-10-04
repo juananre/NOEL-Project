@@ -25,10 +25,19 @@ public class empaque_control : MonoBehaviour
     [SerializeField] Transform salida_sultana;
     [SerializeField] Transform llegada_paquetes;
 
+    [Header("--UI")]
+    [SerializeField] Image letreroFinal;
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] RectTransform rectTransform;
+    public float fadeTime = 1f;
+
+
+
     [SerializeField] GameObject paquetes_cerrado;
 
     int paquetes_hechos = 0;
     int hechos = 3;
+    int finalizados = 0;
 
     void Start()
     {
@@ -38,7 +47,10 @@ public class empaque_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (finalizados == 3)
+        {
 
+        }
         
     }
     public void OnCollisionEnter(Collision collision)
@@ -53,6 +65,7 @@ public class empaque_control : MonoBehaviour
                 sequence.Append(transform.DOMove(salida_sultana.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado sultanas");
+                finalizados++;
             }
         }
 
@@ -66,6 +79,7 @@ public class empaque_control : MonoBehaviour
                 sequence.Append(transform.DOMove(salida_festival.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado festival");
+                finalizados ++;
             }
         }
         else if (collision.gameObject.tag == "duacales"&& gameObject.tag == "ducales_paque")
@@ -79,6 +93,7 @@ public class empaque_control : MonoBehaviour
                 sequence.Append(transform.DOMove(salida_ducales.position, 3f));
                 sequence.OnComplete(() => gameObject.SetActive(false));
                 print("empacado ducales");
+                finalizados++;
             }
         }
 
@@ -96,9 +111,15 @@ public class empaque_control : MonoBehaviour
         {
             collision.gameObject.transform.position = ubicacion_sultana.position;
         }
-        
-
     }
 
-  
+    public void fadeInLetreroDecorado()
+    {
+        letreroFinal.gameObject.SetActive(true);
+        canvasGroup.alpha = 0f;
+        rectTransform.transform.localPosition = new Vector3(0f, 300f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup.DOFade(1, fadeTime);
+    }
+
 }
