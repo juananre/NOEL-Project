@@ -29,6 +29,9 @@ public class empaque_control : MonoBehaviour
     [SerializeField] Image letreroFinal;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] RectTransform rectTransform;
+    [SerializeField] Image letreroDecorado;
+    [SerializeField] CanvasGroup canvasGroup2;
+    [SerializeField] RectTransform rectTransform2;
     public float fadeTime = 1f;
 
 
@@ -47,9 +50,10 @@ public class empaque_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (finalizados == 3)
+        if (finalizados >= 3)
         {
-
+            fadeInLetreroFinal();
+            fadeOutLetreroDecorado();
         }
         
     }
@@ -113,13 +117,20 @@ public class empaque_control : MonoBehaviour
         }
     }
 
-    public void fadeInLetreroDecorado()
+    public void fadeInLetreroFinal()
     {
         letreroFinal.gameObject.SetActive(true);
         canvasGroup.alpha = 0f;
         rectTransform.transform.localPosition = new Vector3(0f, 300f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 0f), 2, false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(1, fadeTime);
+    }
+    public void fadeOutLetreroDecorado()
+    {
+        canvasGroup2.alpha = 1f;
+        rectTransform2.transform.localPosition = new Vector3(0f, 0f, 0f);
+        rectTransform2.DOAnchorPos(new Vector2(0f, 300f), 2, false).SetEase(Ease.InOutQuint);
+        canvasGroup2.DOFade(0, fadeTime).OnComplete(() => letreroDecorado.gameObject.SetActive(false));
     }
 
 }

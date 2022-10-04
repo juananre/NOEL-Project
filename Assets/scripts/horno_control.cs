@@ -152,8 +152,8 @@ public class horno_control : MonoBehaviour
                     sequence.Append(bandeja.transform.DOMove(pocision1.position, 1f));
                     sequence.Append(bandeja.transform.DOMove(pocision2.position, 1f));
                     sequence.OnComplete(() => Destroy(bandeja));
-                    sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_6.rotation, 1f));
-                    sequence.Append(usuario.transform.DOMove(momento_6.position, 1f));
+                    sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_6.rotation, 1.6f));
+                    sequence.Append(usuario.transform.DOMove(momento_6.position, 2.5f));
                     fadeFeedbackCompletado();
                     fadeOutLetreroHorneado2();
                     fadeInLetreroDecorado();
@@ -178,7 +178,7 @@ public class horno_control : MonoBehaviour
         canvasGroup.alpha = 1f;
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 300f), 2, false).SetEase(Ease.InOutQuint);
-        canvasGroup.DOFade(0, fadeTime/2f).OnComplete(() => letreroHorneado.gameObject.SetActive(false));
+        canvasGroup.DOFade(0, fadeTime).OnComplete(() => letreroHorneado.gameObject.SetActive(false));
     }
     public void fadeInLetreroHorneado2()
     {
@@ -194,7 +194,7 @@ public class horno_control : MonoBehaviour
         canvasGroup2.alpha = 1f;
         rectTransform2.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform2.DOAnchorPos(new Vector2(0f, 300f), 2, false).SetEase(Ease.InOutQuint);
-        canvasGroup2.DOFade(0, fadeTime / 2f).OnComplete(() => letreroHorneado2.gameObject.SetActive(false));
+        canvasGroup2.DOFade(0, fadeTime).OnComplete(() => letreroHorneado2.gameObject.SetActive(false));
     }
 
     public void fadeFeedbackCompletado()

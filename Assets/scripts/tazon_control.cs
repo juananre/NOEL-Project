@@ -130,7 +130,7 @@ public class tazon_control : MonoBehaviour
             {
 
                 batidora.SetActive(false);
-                animacion_tazon();
+                //animacion_tazon();
                 fadeOutMezcla();
                 if (aniamuser == true)
                 {
@@ -150,11 +150,11 @@ public class tazon_control : MonoBehaviour
     void animacion_tazon()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(p_hoya.position, 2f));
-        sequence.Append(transform.DOMove(p_hoya_2.position, 2f));
-        sequence.Append(transform.DORotateQuaternion(p_hoya.rotation, 2f));
-        sequence.Append(transform.DORotateQuaternion(p_hoya_resta.rotation, 2f));
-        sequence.Append(transform.DOMove(p_hoya.position, 2f));
+        sequence.Append(transform.DOMove(p_hoya.position, 0.1f));
+        sequence.Append(transform.DOMove(p_hoya_2.position, 0.1f));
+        sequence.Append(transform.DORotateQuaternion(p_hoya.rotation, 0.1f));
+        sequence.Append(transform.DORotateQuaternion(p_hoya_resta.rotation, 0.1f));
+        sequence.Append(transform.DOMove(p_hoya.position, 0.1f));
         sequence.OnComplete(() => gameObject.SetActive(false));
 
     }
@@ -174,7 +174,7 @@ public class tazon_control : MonoBehaviour
         rectTransform.DOAnchorPos(new Vector2(-169f, -112f), fadeTime*2, false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(1, fadeTime);
         canvasGroup.alpha = 1f;
-        rectTransform.transform.localPosition = new Vector3(-169f, 112f, 0f);
+        rectTransform.transform.localPosition = new Vector3(-169f, -112f, 0f);
         rectTransform.DOAnchorPos(new Vector2(-306f, 452f), fadeTime*2, false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(0, fadeTime).OnComplete(() => feedback1.gameObject.SetActive(false));
 

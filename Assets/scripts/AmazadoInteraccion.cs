@@ -9,7 +9,7 @@ public class AmazadoInteraccion : MonoBehaviour
     [Header("--energia")]
 
     public float energy;
-    public int requerido =10;
+    public float requerido =10;
     public float fadeTime = 1f;
 
     [Header("--objetos")]
@@ -69,7 +69,7 @@ public class AmazadoInteraccion : MonoBehaviour
 
     public void BarAnimation()
     {      
-        barra.DOFillAmount(1, 4);
+        barra.DOFillAmount(1, 5.5f);
     }
 
     public void fadeOutLetrero()

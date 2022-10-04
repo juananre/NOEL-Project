@@ -64,10 +64,7 @@ public class corte_control : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         energy_cortada += Time.deltaTime;
-        if (energy_cortada == 3)
-        {
-            fadeFeedback();
-        }
+       
 
          if (energy_cortada >= requerido)
         {
@@ -86,8 +83,8 @@ public class corte_control : MonoBehaviour
     void animacion_bandeja()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(maza_cortada.transform.DOMove(pocision_1.position, 0.5f));
-        sequence.Append(maza_cortada.transform.DOMove(pocision_2.position, 0.5f));
+        sequence.Append(maza_cortada.transform.DOMove(pocision_1.position, 1.5f));
+        sequence.Append(maza_cortada.transform.DOMove(pocision_2.position, 1.5f));
         sequence.Append(maza_cortada.transform.DOMove(pocision_3.position, 2f));
         //sequence.OnComplete(() => Destroy(maza_cortada));
     }
