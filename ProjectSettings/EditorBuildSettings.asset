@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/finpapa.unity
     guid: dc6e293e686cfc449ba8608c5efb4914
+  - enabled: 1
+    path: Assets/Scenes/Loop.unity
+    guid: a9a64039638d28641a2bc2b9d50e2050
   m_configObjects: {}
