@@ -17,14 +17,29 @@ public class AlacenaInteraccion : MonoBehaviour
     [Header("--UI")]
     [SerializeField] Image letrero;
     [SerializeField] Image letrero2;
-    [SerializeField] Image nota;
-    [SerializeField] Image logo;
+    [SerializeField] Image notaFinal;
+    [SerializeField] Image logo;    
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] CanvasGroup canvasGroup2;
     [SerializeField] CanvasGroup canvasGroup3;
     [SerializeField] RectTransform rectTransform;
     [SerializeField] RectTransform rectTransform2;
     [SerializeField] RectTransform rectTransform3;
+    [SerializeField] Image nota0;
+    [SerializeField] CanvasGroup canvasGroup4;
+    [SerializeField] RectTransform rectTransform4;
+    [SerializeField] Image notaHuevos;
+    [SerializeField] CanvasGroup canvasGroup5;
+    [SerializeField] RectTransform rectTransform5;
+    [SerializeField] Image notaHarina;
+    [SerializeField] CanvasGroup canvasGroup6;
+    [SerializeField] RectTransform rectTransform6;
+    [SerializeField] Image notaLeche;
+    [SerializeField] CanvasGroup canvasGroup7;
+    [SerializeField] RectTransform rectTransform7;
+    [SerializeField] Image notaMantequilla;
+    [SerializeField] CanvasGroup canvasGroup8;
+    [SerializeField] RectTransform rectTransform8;
 
     [Header("--botones")]
     [SerializeField] GameObject bot_harina;
@@ -59,6 +74,7 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         letrero.gameObject.SetActive(true);
         logo.gameObject.SetActive(true);
+        nota0.gameObject.SetActive(true);
     }
     void Update()
     {
@@ -67,7 +83,12 @@ public class AlacenaInteraccion : MonoBehaviour
             trancicion();
             fadeOut();            
             fadeIn();
-            fadeInNota();
+            fadeOutNotaHarina();
+            fadeOutNotaHuevos();
+            fadeOutNotaLeche();
+            fadeOutNotaMantequilla();
+            fadeOutNota0();
+            fadeInNota();           
          }       
     }
 
@@ -76,6 +97,7 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         if (ingrediente_1 == true)
         {
+            fadeInNotaHarina();
             contador_pasa += 1;
             ingrediente_1 = false;
         }
@@ -91,6 +113,7 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         if (ingrediente_2 == true)
         {
+            fadeInNotaMantequilla();
             contador_pasa += 1;
             ingrediente_2 = false;
         }
@@ -106,6 +129,7 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         if (ingrediente_3 == true)
         {
+            fadeInNotaHuevos();
             contador_pasa += 1;
             ingrediente_3 = false;
         }
@@ -120,6 +144,7 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         if (ingrediente_4 == true)
         {
+            fadeInNotaLeche();
             contador_pasa += 1;
             ingrediente_4 = false;
         }
@@ -157,8 +182,8 @@ public class AlacenaInteraccion : MonoBehaviour
     {
         print("a");
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_2.rotation, 1.5f));
-        sequence.Append(usuario.transform.DOMove(momento_2.position, 3f));
+        sequence.Append(usuario.transform.DOLocalRotateQuaternion(momento_2.rotation, 1.8f));
+        sequence.Append(usuario.transform.DOMove(momento_2.position, 4f));
         
         contador_pasa = 0;        
     }
@@ -183,11 +208,79 @@ public class AlacenaInteraccion : MonoBehaviour
 
     public void fadeInNota()
     {
-        nota.gameObject.SetActive(true);
+        notaFinal.gameObject.SetActive(true);
         canvasGroup3.alpha = 0f;
         rectTransform3.transform.localPosition = new Vector3(1170f, 0f, 0f);
         rectTransform3.DOAnchorPos(new Vector2(744f, 0f), fadeTime * 2, false).SetEase(Ease.InOutQuint);
         canvasGroup3.DOFade(1, fadeTime);
+    }
+
+    public void fadeOutNota0()
+    {
+        canvasGroup4.alpha = 1f;
+        rectTransform4.transform.localPosition = new Vector3(744f, 0f, 0f);
+        rectTransform4.DOAnchorPos(new Vector2(1200f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup4.DOFade(1, fadeTime).OnComplete(() => nota0.gameObject.SetActive(false));
+    }
+    public void fadeInNotaHuevos()
+    {
+        notaHuevos.gameObject.SetActive(true);
+        canvasGroup5.alpha = 0f;
+        rectTransform5.transform.localPosition = new Vector3(1170f, 0f, 0f);
+        rectTransform5.DOAnchorPos(new Vector2(744f, 0f), fadeTime , false).SetEase(Ease.InOutQuint);
+        canvasGroup5.DOFade(1, fadeTime);
+    }
+    public void fadeOutNotaHuevos()
+    {
+        canvasGroup5.alpha = 1f;
+        rectTransform5.transform.localPosition = new Vector3(744f, 0f, 0f);
+        rectTransform5.DOAnchorPos(new Vector2(1200f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup5.DOFade(1, fadeTime).OnComplete(() => notaHuevos.gameObject.SetActive(false));
+    }
+    public void fadeInNotaHarina()
+    {
+        notaHarina.gameObject.SetActive(true);
+        canvasGroup6.alpha = 0f;
+        rectTransform6.transform.localPosition = new Vector3(1170f, 0f, 0f);
+        rectTransform6.DOAnchorPos(new Vector2(744f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup6.DOFade(1, fadeTime);
+    }
+    public void fadeOutNotaHarina()
+    {
+        canvasGroup6.alpha = 1f;
+        rectTransform6.transform.localPosition = new Vector3(744f, 0f, 0f);
+        rectTransform6.DOAnchorPos(new Vector2(1200f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup6.DOFade(1, fadeTime).OnComplete(() => notaHarina.gameObject.SetActive(false));
+    }
+    public void fadeInNotaLeche()
+    {
+        notaLeche.gameObject.SetActive(true);
+        canvasGroup7.alpha = 0f;
+        rectTransform7.transform.localPosition = new Vector3(1170f, 0f, 0f);
+        rectTransform7.DOAnchorPos(new Vector2(744f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup7.DOFade(1, fadeTime);
+    }
+    public void fadeOutNotaLeche()
+    {
+        canvasGroup7.alpha = 1f;
+        rectTransform7.transform.localPosition = new Vector3(744f, 0f, 0f);
+        rectTransform7.DOAnchorPos(new Vector2(1200f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup7.DOFade(1, fadeTime).OnComplete(() => notaLeche.gameObject.SetActive(false));
+    }
+    public void fadeInNotaMantequilla()
+    {
+        notaMantequilla.gameObject.SetActive(true);
+        canvasGroup8.alpha = 0f;
+        rectTransform8.transform.localPosition = new Vector3(1170f, 0f, 0f);
+        rectTransform8.DOAnchorPos(new Vector2(744f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup8.DOFade(1, fadeTime);
+    }
+    public void fadeOutNotaMantequilla()
+    {
+        canvasGroup8.alpha = 1f;
+        rectTransform8.transform.localPosition = new Vector3(744f, 0f, 0f);
+        rectTransform8.DOAnchorPos(new Vector2(1200f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasGroup8.DOFade(1, fadeTime).OnComplete(() => notaMantequilla.gameObject.SetActive(false));
     }
 
 }
