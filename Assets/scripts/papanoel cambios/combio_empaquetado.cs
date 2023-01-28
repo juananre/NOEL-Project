@@ -43,7 +43,11 @@ public class combio_empaquetado : MonoBehaviour
         {
             SceneManager.LoadScene(cambio);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
         {
             SceneManager.LoadScene(3);
         }

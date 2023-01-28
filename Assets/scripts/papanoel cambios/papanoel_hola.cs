@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class papanoel_hola : MonoBehaviour
 {
-    [SerializeField] int indice;
+    [SerializeField] int skip;
+    [SerializeField] int REINICIO;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +16,14 @@ public class papanoel_hola : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            SceneManager.LoadScene(indice);
+            SceneManager.LoadScene(skip);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(REINICIO);
         }
     }
 

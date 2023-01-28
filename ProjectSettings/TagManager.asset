@@ -15,6 +15,7 @@ TagManager:
   - ducales_paque
   - festival_paquete
   - sultana_paquete
+  - piso
   layers:
   - Default
   - TransparentFX

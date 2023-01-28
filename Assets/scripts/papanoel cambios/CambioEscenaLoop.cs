@@ -14,7 +14,7 @@ public class CambioEscenaLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             SceneManager.LoadScene(1);
         }
