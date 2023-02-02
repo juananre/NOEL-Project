@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10059,7 +10059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energia_decorado: 0
   toque_puesto: 0
-  requerido: 5
+  requerido: 4
   requerido_2: 2
   fadeTime: 3
   script: {fileID: 303341818}
@@ -12066,6 +12066,7 @@ GameObject:
   - component: {fileID: 337873065}
   - component: {fileID: 337873064}
   - component: {fileID: 337873063}
+  - component: {fileID: 337873068}
   m_Layer: 0
   m_Name: Ducal (2)
   m_TagString: duacales
@@ -12198,6 +12199,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337873061}
   m_Mesh: {fileID: 5877612568328804352, guid: ecd6b67f2872d2d4fb1de0c98646f0ee, type: 3}
+--- !u!114 &337873068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337873061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf06bf607489114ca38f81caeba8623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &348232732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43245,7 +43258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940715065479800402, guid: 1d338fed0ed7df84a86c220153fbcc35, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000061817246
+      value: 0.00000006181724
       objectReference: {fileID: 0}
     - target: {fileID: 5940715065479800402, guid: 1d338fed0ed7df84a86c220153fbcc35, type: 3}
       propertyPath: m_LocalRotation.y
